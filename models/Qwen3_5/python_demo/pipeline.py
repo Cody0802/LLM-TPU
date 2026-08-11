@@ -489,3 +489,11 @@ if __name__ == "__main__":
     # yapf: enable
     args = parser.parse_args()
     main(args)
+def check_red_car(pipeline_obj, img_file_path):
+    prompt = "判断图片里面是不是红色的汽车，只输出：是 或者 不是，不要输出任何多余文字。"
+    out_text = pipeline_obj.run_once(prompt, img_file_path)
+    print(f"Qwen‑TPU输出结果：{out_text}")
+    if "是" in out_text:
+        return True
+    else:
+        return False
